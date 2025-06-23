@@ -56,6 +56,23 @@ class LinkedList:
         self.head = new_node
         self.length +=1
         return new_node
+    
+    def pop_first(self):
+        # if there are no value
+        if self.length == 0:
+            print("list is already empty")
+            return
+        elif self.length == 1:
+            self.head = None
+            self.tail = None
+            self.length = 0
+            return
+        else:
+            temp = self.head
+            self.head = self.head.next
+            temp.next = None
+            self.length -=1
+            return
 
 py = LinkedList(2)
 py.append(3)
@@ -64,6 +81,7 @@ py.append(1)
 py.append(7)
 py.append(7)
 py.prepend(9)
+py.pop_first()
 py.print_list()
 
 print(f"length is: {py.length}")

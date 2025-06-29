@@ -83,8 +83,16 @@ class LinkedList:
         i = 0
         for _ in range(index):
             temp = temp.next
-        print(f"The item the {index} is {temp.value}")
-        return
+        print(f"The item at {index} is {temp.value}")
+        return temp
+    
+    def set_item(self, index, value):
+        temp = self.get_item(index)
+
+        if temp:
+            temp.value = value
+            return True
+        return False
         
 py = LinkedList(2)
 py.append(3)
@@ -96,5 +104,7 @@ py.prepend(9)
 py.pop_first()
 py.print_list()
 py.get_item(1)
+py.set_item(1, 8)
+py.print_list()
 
 print(f"length is: {py.length}")

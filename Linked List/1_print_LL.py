@@ -74,6 +74,18 @@ class LinkedList:
             self.length -=1
             return
 
+    def get_item(self, index):
+        if (index < 0 or index > self.length):
+            print("out of range index")
+            return None
+        
+        temp = self.head
+        i = 0
+        for _ in range(index):
+            temp = temp.next
+        print(f"The item the {index} is {temp.value}")
+        return
+        
 py = LinkedList(2)
 py.append(3)
 py.append(4)
@@ -83,5 +95,6 @@ py.append(7)
 py.prepend(9)
 py.pop_first()
 py.print_list()
+py.get_item(1)
 
 print(f"length is: {py.length}")

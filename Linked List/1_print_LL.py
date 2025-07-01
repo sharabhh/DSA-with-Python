@@ -145,12 +145,8 @@ class LinkedList:
             temp.next = before
             before = temp
             temp = after
-        
+            
         return True
-    
-
-
-
         
 py = LinkedList(2)
 py.append(3)

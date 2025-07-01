@@ -112,6 +112,26 @@ class LinkedList:
         temp.next = new_node
         self.length += 1
         return True
+    
+    def remove_item(self, index):
+        if (index <0 or index > self.length):
+            print("range out of bound")
+            return False
+        
+        if index == 0:
+            return self.pop_first()
+
+        if index == self.length:
+            return self.pop()
+        
+        prev_node = self.get_item(index-1)
+        temp = prev_node.next
+
+        prev_node.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return True
+    
 
 
 
@@ -128,6 +148,8 @@ py.print_list()
 # py.get_item(1)
 # py.set_item(1, 8)
 py.insert_node(1, 19)
+py.print_list()
+py.remove_item(1)
 py.print_list()
 
 print(f"length is: {py.length}")

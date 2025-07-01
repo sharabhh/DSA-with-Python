@@ -93,18 +93,41 @@ class LinkedList:
             temp.value = value
             return True
         return False
+
+    def insert_node(self, index, value):
+        
+        if (index < 0 or index > self.length):
+            print("out of bound range")
+            return False
+        
+        if index == 0:
+            return self.prepend(value)
+
+        if index == self.length:
+            return self.append(value)
+
+        new_node = Node(value)
+        temp = self.get_item(index - 1)
+        new_node.next = temp.next
+        temp.next = new_node
+        self.length += 1
+        return True
+
+
+
         
 py = LinkedList(2)
 py.append(3)
-py.append(4)
-py.append(1)
-py.append(7)
-py.append(7)
+# py.append(4)
+# py.append(1)
+# py.append(7)
+# py.append(7)
 py.prepend(9)
-py.pop_first()
+# py.pop_first()
 py.print_list()
-py.get_item(1)
-py.set_item(1, 8)
+# py.get_item(1)
+# py.set_item(1, 8)
+py.insert_node(1, 19)
 py.print_list()
 
 print(f"length is: {py.length}")

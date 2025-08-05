@@ -77,10 +77,16 @@ class DoublyLinekdList:
     def get_item(self, index):
         if index < 0 or index > self.length:
             return None
-        else:
+        halfway = round(self.length / 2)
+        if index < halfway:
             temp = self.head
             for _ in range(index):
                 temp = temp.next
+            return temp.value
+        else:
+            temp = self.tail
+            for _ in range(self.length - 1, index, -1):
+                temp = temp.prev
             return temp.value
             
 

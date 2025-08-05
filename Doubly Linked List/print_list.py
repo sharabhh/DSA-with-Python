@@ -82,12 +82,19 @@ class DoublyLinekdList:
             temp = self.head
             for _ in range(index):
                 temp = temp.next
-            return temp.value
+            return temp
         else:
             temp = self.tail
             for _ in range(self.length - 1, index, -1):
                 temp = temp.prev
-            return temp.value
+            return temp
+    
+    def set_item(self, index, value):
+        temp = self.get_item(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
             
 
 
@@ -99,4 +106,7 @@ obj1.append_item(4)
 # obj1.pop_item()
 
 obj1.print_list()
-print(obj1.get_item(3))
+print("-------------")
+obj1.set_item(3,9)
+obj1.print_list()
+# print(obj1.get_item(3))

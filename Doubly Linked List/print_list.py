@@ -60,12 +60,27 @@ class DoublyLinekdList:
         return True
         # print("added to front")
 
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+            self.head.prev = None
+            temp.next = None
+        self.length -=1
+        return True
+
 
 obj1 = DoublyLinekdList(7)
 obj1.append_item(2)
 obj1.append_item(3)
 obj1.append_item(4)
-obj1.prepend_item(4)
+obj1.pop_first()
+# obj1.prepend_item(4)
 # obj1.pop_item()
 
 obj1.print_list()

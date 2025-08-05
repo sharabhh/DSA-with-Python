@@ -103,7 +103,7 @@ class DoublyLinekdList:
             self.prepend_item(value)
         if index == self.length:
             self.append_item(value)
-            
+
         temp = self.get_item(index)
         if temp:
             new_node = Node(value)
@@ -115,6 +115,25 @@ class DoublyLinekdList:
             self.length += 1
             return True
         return False
+    
+    def remove_item(self, index):
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+           return self.pop_first()
+        if index == self.length - 1:
+            return self.pop_item()
+        
+        temp = self.get_item(index)
+        before = temp.prev
+        after = temp.next
+
+        before.next = after
+        after.prev = before
+        temp.next = None
+        temp.prev = None
+        self.length -=1
+        return temp
             
 
 
@@ -127,7 +146,7 @@ obj1.append_item(4)
 
 obj1.print_list()
 print("-------")
-obj1.insert_item(2,91)
+obj1.remove_item(3)
 obj1.print_list()
 # print("-------------")
 # obj1.set_item(3,9)

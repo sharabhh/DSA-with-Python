@@ -23,15 +23,36 @@ class DoublyLinekdList:
             self.tail.next = new_node
             new_node.prev = self.tail
             self.tail = new_node
-            self.length +=1
         else:
             self.head = new_node
             self.tail = new_node
         self.length +=1
         print(f"The new length is {self.length}")
         return True
+    
+    def pop_item(self):
+        if self.head is None:
+            print("Already empty list")
+            return False
+        temp = self.tail
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            temp = self.tail
+            self.tail = self.tail.prev
+            self.tail.next = None
+            temp.prev = None
+        self.length -=1
+        
+        print(f"New length is {self.length}")
+        return temp
+
 
 obj1 = DoublyLinekdList(7)
 obj1.append_item(2)
+obj1.append_item(3)
+obj1.append_item(4)
+obj1.pop_item()
 
 obj1.print_list()

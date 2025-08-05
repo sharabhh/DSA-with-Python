@@ -44,15 +44,28 @@ class DoublyLinekdList:
             self.tail.next = None
             temp.prev = None
         self.length -=1
-        
         print(f"New length is {self.length}")
         return temp
+    
+    def prepend_item(self, value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+        self.length += 1
+        return True
+        # print("added to front")
 
 
 obj1 = DoublyLinekdList(7)
 obj1.append_item(2)
 obj1.append_item(3)
 obj1.append_item(4)
-obj1.pop_item()
+obj1.prepend_item(4)
+# obj1.pop_item()
 
 obj1.print_list()

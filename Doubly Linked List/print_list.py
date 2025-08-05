@@ -73,14 +73,24 @@ class DoublyLinekdList:
             temp.next = None
         self.length -=1
         return True
+    
+    def get_item(self, index):
+        if index < 0 or index > self.length:
+            return None
+        else:
+            temp = self.head
+            for _ in range(index):
+                temp = temp.next
+            return temp.value
+            
 
 
 obj1 = DoublyLinekdList(7)
 obj1.append_item(2)
 obj1.append_item(3)
 obj1.append_item(4)
-obj1.pop_first()
-# obj1.prepend_item(4)
+# obj1.pop_first()
 # obj1.pop_item()
 
 obj1.print_list()
+print(obj1.get_item(3))

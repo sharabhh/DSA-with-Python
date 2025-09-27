@@ -21,28 +21,26 @@ class Stack:
             print(i)
         return
     
-    def is_empty(self, list_name):
-        if len(list_name) == 0:
-            return True
-        return False
-    
     def is_balanced(self):
         match_stack = []
         for i in self.stack_list:
             if i == "(" or i== "{" or i == "[":
                 match_stack.append(i)
-            elif i == ")":
-                if self.is_empty(match_stack) or match_stack.pop() != "(":
+            else:
+                if not match_stack:
                     return False
-            elif i == "}":
-                if self.is_empty(match_stack) or match_stack.pop() != "{":
-                    return False
-            elif i == "]":
-                if self.is_empty(match_stack) or match_stack.pop() != "[":
-                    return False
+                if i == ")":
+                    if match_stack.pop() != "(":
+                        return False
+                elif i == "}":
+                    if match_stack.pop() != "{":
+                        return False
+                elif i == "]":
+                    if match_stack.pop() != "[":
+                        return False
         
         # return match_stack
-        return self.is_empty(match_stack)
+        return not match_stack
             
             
         # return match_stack

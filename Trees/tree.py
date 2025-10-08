@@ -29,11 +29,27 @@ class BinarySearchTree:
                     return True
                 temp = temp.right
 
+    def contains(self, value):
+        temp = self.root
+        level = 1
+        while temp is not None:
+            if temp.value == value:
+                print(f"found at level {level}")
+                return True
+            elif value < temp.value:
+                temp = temp.left
+            else:
+                temp = temp.right
+            level +=1
+        print("value not found")
+        return False
+
 my_tree = BinarySearchTree()
 my_tree.insert_node(2)
 my_tree.insert_node(5)
 my_tree.insert_node(1)
 
-print(my_tree.root.value)
-print(my_tree.root.left.value)
-print(my_tree.root.right.value)
+my_tree.contains(5)
+# print(my_tree.root.value)
+# print(my_tree.root.left.value)
+# print(my_tree.root.right.value)

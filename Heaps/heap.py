@@ -12,7 +12,7 @@ class MaxHeap:
         return (index - 1)//2
     
     def _swap(self, index1, index2):
-        self.heap[index1], self[index2] = self.heap[index2], self.heap[index1]
+        self.heap[index1], self.heap[index2] = self.heap[index2], self.heap[index1]
 
     def insert(self, value):
         self.heap.append(value)

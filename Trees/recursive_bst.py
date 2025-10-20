@@ -72,6 +72,35 @@ class BinarySearchTree:
         if self.root == None:
             return Node(value)
         return self.__r_insert(self.root, value)
+    
+    def min_value(self, current_node):
+        while current_node.left is not None:
+            current_node = current_node.left
+        return current_node.value
+    
+    def __delete_node(self,current_node, value):
+        if current_node is None:
+            return None
+        
+        if value < current_node.value:
+            current_node.left =  self.__delete_node(current_node.left, value)
+        elif value > current_node.value:
+            current_node.right = self.__delete_node(current_node.right, value)
+        else:
+            if current_node.left == None and current_node.right == None:
+                return None
+            elif current_node.left is None:
+                current_node = current_node.right
+            elif current_node.right is None:
+                current_node = current_node.left
+            else:
+                sub_tree_min = self.min_value(current_node.right)
+                current_node.value = sub_tree_min
+                current_node.right = self.__delete_node(current_node.right, sub_tree_min)
+        return current_node
+
+    def delete_node(self, value):
+        return self.__delete_node(self.root, value)
 
 my_tree = BinarySearchTree()
 my_tree.insert_node(2)
@@ -82,5 +111,14 @@ my_tree.r_insert(12)
 my_tree.r_insert(11)
 my_tree.insert_node(16)
 
+print(my_tree.root.right.right.value)
+my_tree.delete_node(12)
+print(my_tree.root.right.right.value)
 # my_tree.contains(16) 
-print(my_tree.r_contains(11))
+# print(my_tree.r_contains(11))
+'''
+    2
+1           5
+      3         12
+            11      16
+'''

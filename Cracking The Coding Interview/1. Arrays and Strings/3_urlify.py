@@ -12,5 +12,25 @@ def urlify(s, n):
         final_str += list1[j]
     return final_str
 
-str1 = "Mr John Smith   "
-print(urlify(str1, 13))
+# for inplace swaps in the same one
+def optimised_urlify(s, n):
+    arr = list(s)
+    write = len(arr) - 1
+    read  = n -1
+
+    while read >=0:
+        if arr[read] == " ":
+            arr[write] = "0"
+            arr[write-1] = "2"
+            arr[write-2] = "%"
+            write -= 3
+        else:
+            arr[write] = arr[read]
+            write -= 1
+        read -=1
+
+    return ''.join(arr)
+
+str1 = "Mr John Smith    "
+# print(urlify(str1, 13))
+print(optimised_urlify(str1, 13))
